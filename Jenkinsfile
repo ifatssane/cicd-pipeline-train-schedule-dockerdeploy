@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     def registry_url = "registry.hub.docker.com/"
-                    bat "docker login -u 261261 -p Jaouad96-+-+ ${registry_url}"
+                    sh "docker login -u 261261 -p Jaouad96-+-+ ${registry_url}"
                     
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
                         app.push("${env.BUILD_NUMBER}")
