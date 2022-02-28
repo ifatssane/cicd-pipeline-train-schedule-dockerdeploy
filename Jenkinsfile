@@ -28,11 +28,12 @@ pipeline {
             }
             steps {
                 script {
-
                     docker.withRegistry('docker.io', 'docker_hub_login') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
+                    sh 'docker tag docker-jenkin-demo ifatssane/train-schedule:${env.BUILD_NUMBER}'
+
                 }
             }
         }
